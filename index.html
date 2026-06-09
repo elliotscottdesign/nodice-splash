@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>No Dice — London Fields · OPENS 17 JUNE</title>
+  <meta name="description" content="No Dice — a neighbourhood bar in the railway arches off London Fields. Pool, arcade, kitchen residencies, big screens for sport. Opens 17 June 2026.">
+
+  <meta property="og:title" content="No Dice — Opens 17 June">
+  <meta property="og:description" content="A neighbourhood bar in the railway arches off London Fields. 407 Mentmore Terrace, E8 3PH.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://nodice.bar">
+  <meta property="og:image" content="https://nodice.bar/nodice-wordmark.png">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --ink: #000000;
+      --red: #DA1B33;
+      --cream: #F5EFE3;
+    }
+
+    body {
+      min-height: 100vh;
+      background: var(--ink);
+      color: var(--cream);
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 24px;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    .wordmark {
+      width: min(560px, 88vw);
+      height: auto;
+      display: block;
+      margin-bottom: 36px;
+    }
+
+    .opens-line {
+      font-family: 'Bebas Neue', Impact, sans-serif;
+      font-size: clamp(1.4rem, 4vw, 2.6rem);
+      line-height: 1;
+      letter-spacing: 0.08em;
+      color: var(--red);
+      margin: 0 0 10px 0;
+      text-align: center;
+      text-transform: uppercase;
+      font-weight: 400;
+    }
+
+    .address {
+      font-size: clamp(0.65rem, 1.1vw, 0.78rem);
+      letter-spacing: 0.34em;
+      color: rgba(245, 239, 227, 0.7);
+      text-transform: uppercase;
+      margin-bottom: 56px;
+      text-align: center;
+      font-weight: 600;
+    }
+
+    .signup {
+      width: 100%;
+      max-width: 480px;
+      text-align: center;
+    }
+
+    .signup-label {
+      font-size: 11px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: rgba(245, 239, 227, 0.6);
+      margin-bottom: 14px;
+      font-weight: 600;
+    }
+
+    .signup-row {
+      display: flex;
+      gap: 8px;
+    }
+
+    .signup-row input {
+      flex: 1;
+      background: rgba(218, 27, 51, 0.08);
+      border: 1px solid rgba(218, 27, 51, 0.4);
+      border-radius: 8px;
+      padding: 12px 14px;
+      color: var(--cream);
+      font-size: 14px;
+      outline: none;
+      font-family: inherit;
+    }
+    .signup-row input::placeholder { color: rgba(245, 239, 227, 0.4); }
+    .signup-row input:focus { border-color: rgba(218, 27, 51, 1); }
+
+    .signup-row button {
+      background: rgba(218, 27, 51, 0.85);
+      border: 1px solid rgba(218, 27, 51, 0.85);
+      border-radius: 8px;
+      color: #FFFFFF;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 0 22px;
+      cursor: pointer;
+      font-family: inherit;
+      transition: background 0.18s;
+    }
+    .signup-row button:hover:not(:disabled) { background: var(--red); }
+    .signup-row button:disabled { opacity: 0.6; cursor: wait; }
+
+    .signup-fine {
+      font-size: 10px;
+      color: rgba(245, 239, 227, 0.4);
+      margin-top: 10px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+    }
+
+    .success {
+      max-width: 480px;
+      width: 100%;
+      text-align: center;
+      padding: 20px 24px;
+      border: 1px solid rgba(218, 27, 51, 0.45);
+      border-radius: 10px;
+      display: none;
+    }
+    .success.show { display: block; }
+    .signup.hidden { display: none; }
+
+    .success-kicker {
+      font-size: 11px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 8px;
+      font-weight: 700;
+    }
+    .success-body { font-size: 14px; color: rgba(245, 239, 227, 0.85); }
+  </style>
+</head>
+<body>
+
+  <img class="wordmark" src="https://dev.nodice.bar/nodice-wordmark.png" alt="No Dice">
+
+  <h1 class="opens-line">Opens 17 June</h1>
+
+  <div class="address">407 Mentmore Terrace, Hackney, E8 3PH</div>
+
+  <form class="signup" id="signup-form">
+    <div class="signup-label">Get the opening night details</div>
+    <div class="signup-row">
+      <input type="email" id="email" name="email" placeholder="you@email.com" required autocomplete="email">
+      <button type="submit" id="submit-btn">Notify me</button>
+    </div>
+    <div class="signup-fine">One email. No spam.</div>
+  </form>
+
+  <div class="success" id="success">
+    <div class="success-kicker">You're on the list</div>
+    <div class="success-body">We'll let you know the moment doors open. 17 June.</div>
+  </div>
+
+  <script>
+    const FN_URL = 'https://rntcujcpsozvuxvmlejv.supabase.co/functions/v1/send-welcome-discount';
+    const ANON = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJudGN1amNwc296dnV4dm1sZWp2Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODA0Nzk0MDIsImV4cCI6MjA5NjA1NTQwMn0.cUMy2GWme7quwDKns_sXq8OY-9SqWaIuZqhYSz3ZwrY';
+
+    const form = document.getElementById('signup-form');
+    const success = document.getElementById('success');
+    const btn = document.getElementById('submit-btn');
+    const emailInput = document.getElementById('email');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const email = emailInput.value.trim();
+      if (!email) return;
+      btn.disabled = true;
+      btn.textContent = 'Sending…';
+      try {
+        await fetch(FN_URL, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'apikey': ANON,
+            'Authorization': 'Bearer ' + ANON,
+          },
+          body: JSON.stringify({ email: email, source: 'splash' }),
+        });
+      } catch (_) {}
+      form.classList.add('hidden');
+      success.classList.add('show');
+    });
+  </script>
+
+</body>
+</html>
